@@ -37,7 +37,7 @@ public class Catalogo {
 		Utente x = new Utente("Nello", "Casolla", "25/03/1990", "fz890");
 
 		try {
-			ecd.aggiungiElementoCatalogo(l);
+			ecd.aggiungiElementoCatalogo(r);
 			// ecd.aggiungiElementoCatalogo(r);
 			// ecd.rimuoviElementoCatalogo("78144db5-c5e2-4035-bc3f-56cbe99fe35a");
 		} finally {

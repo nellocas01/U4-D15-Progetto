@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.UUID;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -32,7 +34,7 @@ public class ElementoCatalogoDAO {
 		}
 	}
 
-	public void rimuoviElementoCatalogo(String isbn) {
+	public void rimuoviElementoCatalogo(UUID isbn) {
 		EntityTransaction tx = em.getTransaction();
 
 		try {
@@ -52,7 +54,7 @@ public class ElementoCatalogoDAO {
 		}
 	}
 
-	public ElementoCatalogo ricercaPerISBN(String isbn) {
+	public ElementoCatalogo ricercaPerISBN(UUID isbn) {
 		ElementoCatalogo elemento = em.find(ElementoCatalogo.class, isbn);
 		em.close();
 		return elemento;

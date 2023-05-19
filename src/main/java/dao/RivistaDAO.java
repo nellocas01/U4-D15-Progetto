@@ -22,7 +22,7 @@ public class RivistaDAO {
 			tx.begin();
 			em.persist(r);
 			tx.commit();
-			log.info("libro salvato");
+			log.info("rivista salvata");
 
 		} finally
 
