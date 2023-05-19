@@ -3,7 +3,7 @@ package dao;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import entities.Libro;
+import entities.Utente;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -15,14 +15,14 @@ public class UtenteDAO {
 		this.em = em;
 	}
 
-	public void aggiungiUtente(Libro libro) {
+	public void aggiungiUtente(Utente u) {
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
-			em.persist(libro);
+			em.persist(u);
 			tx.commit();
-			log.info("libro salvato");
+			log.info("utente salvato");
 
 		} finally
 

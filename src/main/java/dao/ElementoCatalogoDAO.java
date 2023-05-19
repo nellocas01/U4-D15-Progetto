@@ -1,22 +1,21 @@
 package dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 import entities.ElementoCatalogo;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ElementoCatalogoDAO {
 
-	private EntityManagerFactory emf;
+	private EntityManager em;
 
-	public void ElementoCatalogoDao() {
-		emf = Persistence.createEntityManagerFactory("U4-D15-Progetto");
+	public ElementoCatalogoDAO(EntityManager em) {
+		this.em = em;
 	}
 
 	public void aggiungiElementoCatalogo(ElementoCatalogo elemento) {
-		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		try {
@@ -34,7 +33,6 @@ public class ElementoCatalogoDAO {
 	}
 
 	public void rimuoviElementoCatalogo(String isbn) {
-		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		try {
@@ -55,7 +53,6 @@ public class ElementoCatalogoDAO {
 	}
 
 	public ElementoCatalogo ricercaPerISBN(String isbn) {
-		EntityManager em = emf.createEntityManager();
 		ElementoCatalogo elemento = em.find(ElementoCatalogo.class, isbn);
 		em.close();
 		return elemento;

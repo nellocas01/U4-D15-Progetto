@@ -1,6 +1,5 @@
 package entities;
 
-import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.GeneratedValue;
@@ -22,12 +21,11 @@ public class Utente {
 
 	private String nome;
 	private String cognome;
-	private Date dataNascita;
+	private String dataNascita;
 	private String numeroTessera;
 
-	public Utente(UUID id, String nome, String cognome, Date dataNascita, String numeroTessera) {
+	public Utente(String nome, String cognome, String dataNascita, String numeroTessera) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = dataNascita;

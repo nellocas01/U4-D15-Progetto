@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Rivista extends ElementoCatalogo {
+
 	@Enumerated(EnumType.STRING)
 	private Periodicita periodicita;
 

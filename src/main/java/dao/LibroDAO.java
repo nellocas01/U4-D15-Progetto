@@ -15,12 +15,12 @@ public class LibroDAO {
 		this.em = em;
 	}
 
-	public void aggiungiLibro(Libro libro) {
+	public void aggiungiLibro(Libro ld) {
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
-			em.persist(libro);
+			em.persist(ld);
 			tx.commit();
 			log.info("libro salvato");
 

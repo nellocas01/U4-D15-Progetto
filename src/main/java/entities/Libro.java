@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Libro extends ElementoCatalogo {
+
 	private String autore;
 	private String genere;
 
