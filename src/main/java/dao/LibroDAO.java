@@ -1,34 +1,32 @@
 package dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 import entities.Libro;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class LibroDAO {
 
-	private EntityManagerFactory emf;
+	private final EntityManager em;
 
-	public void LibroDao() {
-		emf = Persistence.createEntityManagerFactory("nome-unita-di-persistenza");
+	public LibroDAO(EntityManager em) {
+		this.em = em;
 	}
 
 	public void aggiungiLibro(Libro libro) {
-		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
 			em.persist(libro);
 			tx.commit();
-		} catch (Exception e) {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
+			log.info("libro salvato");
+
+		} finally
+
+		{
 			em.close();
 		}
 	}

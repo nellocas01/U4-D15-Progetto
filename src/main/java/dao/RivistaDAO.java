@@ -1,36 +1,33 @@
 package dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
 import entities.Rivista;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class RivistaDAO {
 
-	private EntityManagerFactory emf;
+	private final EntityManager em;
 
-	public void RivistaDao() {
-		emf = Persistence.createEntityManagerFactory("nome-unita-di-persistenza");
+	public RivistaDAO(EntityManager em) {
+		this.em = em;
 	}
 
-	public void aggiungiRivista(Rivista rivista) {
-		EntityManager em = emf.createEntityManager();
+	public void aggiungiRivista(Rivista r) {
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
-			em.persist(rivista);
+			em.persist(r);
 			tx.commit();
-		} catch (Exception e) {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
+			log.info("libro salvato");
+
+		} finally
+
+		{
 			em.close();
 		}
 	}
-
 }

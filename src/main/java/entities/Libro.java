@@ -1,13 +1,13 @@
 package entities;
 
-import javax.persistence.Entity;
-
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+//@Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Libro extends ElementoCatalogo {
 	private String autore;
 	private String genere;

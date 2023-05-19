@@ -11,11 +11,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+//@Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Prestito {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

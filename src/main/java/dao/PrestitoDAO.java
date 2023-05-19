@@ -4,41 +4,37 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import entities.Prestito;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class PrestitoDAO {
+	private final EntityManager em;
 
-	private EntityManagerFactory emf;
-
-	public void PrestitoDao() {
-		emf = Persistence.createEntityManagerFactory("U4-D15-Progetto");
+	public PrestitoDAO(EntityManager em) {
+		this.em = em;
 	}
 
-	public void aggiungiPrestito(Prestito prestito) {
-		EntityManager em = emf.createEntityManager();
+	public void aggiungiPrestito(Prestito p) {
 		EntityTransaction tx = em.getTransaction();
 
 		try {
 			tx.begin();
-			em.persist(prestito);
+			em.persist(p);
 			tx.commit();
-		} catch (Exception e) {
-			if (tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
+			log.info("prestito salvato");
+
+		} finally
+
+		{
 			em.close();
 		}
 	}
 
 	public List<Prestito> ricercaPrestitiScadutiNonRestituiti() {
-		EntityManager em = emf.createEntityManager();
 		TypedQuery<Prestito> query = em.createQuery(
 				"SELECT p FROM Prestito p WHERE p.dataRestituzionePrevista < :oggi AND p.dataRestituzioneEffettiva IS NULL",
 				Prestito.class);

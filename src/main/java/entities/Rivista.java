@@ -1,15 +1,16 @@
 package entities;
 
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+//@Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Rivista extends ElementoCatalogo {
 	@Enumerated(EnumType.STRING)
 	private Periodicita periodicita;

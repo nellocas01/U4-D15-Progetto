@@ -10,8 +10,10 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import entities.ElementoCatalogo;
+import lombok.extern.slf4j.Slf4j;
 import utils.JpaUtil;
 
+@Slf4j
 public class Catalogo {
 
 	private static EntityManagerFactory emf = JpaUtil.getEntityManagerFactory();
@@ -22,7 +24,7 @@ public class Catalogo {
 		EntityManager em = emf.createEntityManager();
 	
 
-	public void aggiungiElementoCatalogo(ElementoCatalogo elemento) {
+	public aggiungiElementoCatalogo(ElementoCatalogo elemento) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 
