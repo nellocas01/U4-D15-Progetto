@@ -10,14 +10,17 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import entities.ElementoCatalogo;
+import utils.JpaUtil;
 
 public class Catalogo {
 
-	private EntityManagerFactory emf;
+	private static EntityManagerFactory emf = JpaUtil.getEntityManagerFactory();
 
-	public Catalogo() {
-		emf = Persistence.createEntityManagerFactory("U4-D15-Progetto");
-	}
+	public static void main(String[] args) {
+
+
+		EntityManager em = emf.createEntityManager();
+	
 
 	public void aggiungiElementoCatalogo(ElementoCatalogo elemento) {
 		EntityManager em = emf.createEntityManager();
@@ -102,4 +105,6 @@ public class Catalogo {
 		return query;
 
 	}
+	
+}
 }
